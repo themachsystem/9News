@@ -50,13 +50,13 @@ class NewsArticlesViewModelTests: XCTestCase {
         mockWebService.shouldReturnEmptyData = true
         
         // When
-        var networkError: Error?
+        var networkError: WebServiceError?
         viewModel.fetchNews { (error) in
             networkError = error
         }
         
         // Then
-        XCTAssertEqual(networkError?.localizedDescription, "An unknown error has occurred.")
+        XCTAssertEqual(networkError?.errorDetails, WebServiceError.badData.errorDetails)
     }
     
     func testViewModel_callWebService_returnSuccess() {

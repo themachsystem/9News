@@ -25,31 +25,80 @@ struct WebService: WebServiceProtocol {
         urlSession = URLSession.init(configuration: config)
     }
         
-    func fetchNews(completion: @escaping (Result<NewsModel?, Error>) -> Void) {
-        let url = URL(string: apiUrl)!
+    func fetchNews(completion: @escaping (Result<NewsModel?, WebServiceError>) -> Void) {
+        guard let url = URL(string: apiUrl) else {
+            completion(.failure(.badUrl))
+            return
+        }
         
         let urlRequest = URLRequest(url: url)
         
         let dataTask = urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            
             guard error == nil else {
-                completion(.failure(error!))
+                completion(.failure(.httpError((error! as NSError).code)))
                 return
             }
             guard let data = data else {
-                // The request went through but something wrong happened that we received no data response.
-                let unknownError = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "An unknown error has occurred."])
-                completion(.failure(unknownError))
+                completion(.failure(.badData))
                 return
             }
             do {
                 let newsData = try JSONDecoder().decode(NewsModel.self, from: data)
                 completion(.success(newsData))
             } catch {
-                completion(.failure(error))
+                completion(.failure(.unknownJSONFormat))
             }
         }
         
         dataTask.resume()
+    }
+}
+
+enum WebServiceError: Error {
+
+    case noData
+    case unknownJSONFormat
+    case requestTimeout
+    case noInternetConnection
+    case httpError(Int)
+    case customError(String)
+    case unknownError
+    case badData
+    case badUrl
+    
+    var errorDetails: String {
+        get {
+            switch self {
+            case .badData:
+                return "Bad data"
+            case .noData:
+                return "No payload in response"
+            case .unknownJSONFormat:
+                return "The data format is incorret"
+            case .requestTimeout:
+                return "The newtork is too slow or no network, please try later"
+            case .noInternetConnection:
+                return "The Internet connection appears to be offline."
+            case let .httpError(statusCode):
+                switch statusCode {
+                case 400:
+                    return "request contains incorrect syntax."
+                case 403:
+                    return "Access to data is denied"
+                case 404:
+                    return "Could not found the required information online"
+                case 500...510:
+                    return "Server error"
+                default:
+                    return "An unknown error occured"
+                }
+            case let .customError(customErrorMessage):
+                return customErrorMessage
+            case .unknownError:
+                return "An unknown error has occurred."
+            case .badUrl:
+                return "Bad url"
+            }
+        }
     }
 }

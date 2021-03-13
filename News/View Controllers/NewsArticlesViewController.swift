@@ -13,9 +13,8 @@ protocol LoadingActivityIndicator {
     func dismissLoadingIndicator()
 }
 
-let showNewsPageSegueIdentifier = "ShowNewsWebPage"
-
 class NewsArticlesViewController: UITableViewController, LoadingActivityIndicator {
+    private let showNewsPageSegueIdentifier = "ShowNewsWebPage"
     
     var viewModel: NewsArticlesViewModel!
     
@@ -30,7 +29,7 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
         
         loadNews()
     }
-    
+    // MARK: - Private
     private func createActivityIndicator() {
         if #available(iOS 13.0, *) {
             activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -56,7 +55,7 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 if let error = error {
-                    self.showNetworkErrorMessage(error.localizedDescription)
+                    self.showNetworkErrorMessage(error.errorDetails)
                 }
                 self.updateNavigationTitle()
                 self.tableView.reloadData()

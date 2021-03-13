@@ -54,7 +54,7 @@ class MockWebServiceTests: XCTestCase {
         webService.shouldReturnEmptyData = true
 
         // When
-        var networkError: Error?
+        var networkError: WebServiceError?
         webService.fetchNews { (result) in
             switch result {
             case .success:
@@ -64,7 +64,7 @@ class MockWebServiceTests: XCTestCase {
             }
         }
         // Then
-        XCTAssertEqual(networkError?.localizedDescription, "An unknown error has occurred.")
+        XCTAssertEqual(networkError?.errorDetails, WebServiceError.badData.errorDetails)
     }
     
     func testWebService_returnSuccess() {

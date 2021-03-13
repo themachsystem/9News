@@ -32,11 +32,11 @@ final class MockWebService {
 }
 
 extension MockWebService: WebServiceProtocol {
-    func fetchNews(completion: @escaping (Result<NewsModel?, Error>) -> Void) {
+    func fetchNews(completion: @escaping (Result<NewsModel?, WebServiceError>) -> Void) {
         fetchServiceWasCalled = true
         if !networkCallFailed {
             if shouldReturnEmptyData {
-                completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey:"An unknown error has occurred."])))
+                completion(.failure(.badData))
             }
             else {
                 do {
@@ -44,12 +44,12 @@ extension MockWebService: WebServiceProtocol {
                     let newsModel = try JSONDecoder().decode(NewsModel.self, from: newsJSONData)
                     completion(.success(newsModel))
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(.unknownJSONFormat))
                 }
             }
         }
         else {
-            completion(.failure(NSError(domain: "", code: -1, userInfo: nil)))
+            completion(.failure(.unknownError))
         }
     }
 }

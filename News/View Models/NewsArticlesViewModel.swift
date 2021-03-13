@@ -18,9 +18,9 @@ class NewsArticlesViewModel {
         self.webService = webService
     }
     
-    func fetchNews(completion: @escaping (_ error: Error?) -> Void) {
+    func fetchNews(completion: @escaping (_ error: WebServiceError?) -> Void) {
         webService.fetchNews {[weak self] result in
-            var fetchError: Error?
+            var fetchError: WebServiceError?
             defer {
                 completion(fetchError)
             }

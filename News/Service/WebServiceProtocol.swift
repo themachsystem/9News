@@ -12,5 +12,5 @@ protocol WebServiceProtocol {
     /**
      * Fetches news from the API and calls a handler upon completion.
      */
-    func fetchNews(completion: @escaping (Result<NewsModel?, Error>) -> Void)
+    func fetchNews(completion: @escaping (Result<NewsModel?, WebServiceError>) -> Void)
 }

@@ -32,7 +32,7 @@ class NewsCell: UITableViewCell {
         
         let imageUrl = URL(string: viewModel.imageUrl)
         thumbnailImageView.sd_setImage(with: imageUrl,
-                                       placeholderImage: nil,
+                                       placeholderImage: UIImage(named: "placeholder"),
                                        options: .refreshCached,
                                        completed: nil)
     }

@@ -35,16 +35,6 @@ class NewsArticlesViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.activityIndicator)
     }
     
-    func testSUT_canShowLoadingActivityIndicator() {
-        sut.showLoadingIndicator()
-        XCTAssertTrue(sut.activityIndicator.isAnimating)
-    }
-    
-    func testSUT_canDismissLoadingActivityIndicator() {
-        sut.dismissLoadingIndicator()
-        XCTAssertFalse(sut.activityIndicator.isAnimating)
-    }
-
     func testSUT_hasViewModel() {
         XCTAssertNotNil(sut.viewModel)
     }
