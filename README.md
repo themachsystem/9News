@@ -2,6 +2,7 @@
 
 * The Swift 5 project that allows downloading news feed. 
 * The application uses MVVM (Model-View-ViewModel) design pattern
+* Domain "afr.com" is exempted from App Transport Security.
 * The app uses UIKit: storyboard and auto layout
 * The app uses SDWebImage library for loading & caching Internet images.
 * The automated UI tests are implemented to simulate the normal use-cases and test the behavior of the application in different scenarios.
