@@ -20,7 +20,7 @@
 
 * XCode version: 12
 * Swift version: 5
-* Cocoapods version: 1.2.0
+* Cocoapods version: 1.10.1
 * Minimum iOS version supported: 11 
 
 ### Building
