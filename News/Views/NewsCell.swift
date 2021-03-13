@@ -30,11 +30,13 @@ class NewsCell: UITableViewCell {
         byLineLabel.text = viewModel.byLine
         abstractLabel.text = viewModel.theAbstract
         
-        let imageUrl = URL(string: viewModel.imageUrl)
-        thumbnailImageView.sd_setImage(with: imageUrl,
-                                       placeholderImage: UIImage(named: "placeholder"),
-                                       options: .refreshCached,
-                                       completed: nil)
+        if let imageUrl = viewModel.imageUrl,
+           let url = URL(string: imageUrl) {
+            thumbnailImageView.sd_setImage(with: url,
+                                           placeholderImage: UIImage(named: "placeholder"),
+                                           options: .refreshCached,
+                                           completed: nil)
+        }
     }
     
     override func prepareForReuse() {

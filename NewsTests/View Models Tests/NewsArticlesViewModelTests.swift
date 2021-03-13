@@ -115,7 +115,7 @@ class NewsArticlesViewModelTests: XCTestCase {
         var numberOfCellViewModelsHaveThumbnailImages: Int = 0
         
         for cellViewModel in viewModel.newsArticleCellViewModels {
-            if cellViewModel.imageUrl.count > 0 {
+            if cellViewModel.imageUrl != nil && cellViewModel.imageUrl!.count > 0 {
                 numberOfCellViewModelsHaveThumbnailImages += 1
             }
         }

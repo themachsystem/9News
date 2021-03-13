@@ -20,19 +20,18 @@ struct NewsArticleCellViewModel {
         return newsArticle.byLine
     }
     
-    var imageUrl: String {
+    var imageUrl: String? {
         if let relatedImages = newsArticle.relatedImages,
             let thumbnailImage = relatedImages.filter({ $0.type == "thumbnail" }).first {
             return thumbnailImage.url
         }
-        else {
-            return ""
-        }
-
+        return nil
     }
+    
     var url: String {
         return newsArticle.url
     }
+    
     var timeStamp: Int {
         newsArticle.timeStamp
     }
