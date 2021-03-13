@@ -8,7 +8,7 @@
 import Foundation
 
 final class MockWebService {
-    var networkCallFailed = false
+    var networkCallFailed = UITestingConfig.networkCallShouldFail ? true : false
     var shouldReturnEmptyData = false
     var fetchServiceWasCalled = false
         

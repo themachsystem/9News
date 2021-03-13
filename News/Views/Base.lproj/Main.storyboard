@@ -41,6 +41,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="newsTableView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="87C-7d-igc" id="Cqq-zy-u1Z"/>
                             <outlet property="delegate" destination="87C-7d-igc" id="fhn-61-7hs"/>
@@ -70,6 +73,9 @@
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="newsWebView"/>
+                                </userDefinedRuntimeAttributes>
                             </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sf4-IQ-H6C"/>

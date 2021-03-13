@@ -17,6 +17,7 @@ class NewsPageViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = viewModel.newsTitle
+        navigationController?.navigationBar.accessibilityIdentifier = UITestingConfig.AccessibilityIdentifier.webViewNavigationTitle
         loadNewsPage()
     }
     

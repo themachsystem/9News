@@ -18,13 +18,14 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
     
     var viewModel: NewsArticlesViewModel!
     
-    let webService = WebService()
+    var webService: WebServiceProtocol {
+        return UITestingConfig.isTesting ? MockWebService() : WebService()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: String(describing: NewsCell.self), bundle: nil), forCellReuseIdentifier: newsCellIdentifier)
-        
         createActivityIndicator()
         
         loadNews()
@@ -88,6 +89,8 @@ extension NewsArticlesViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: newsCellIdentifier, for: indexPath) as! NewsCell
         let cellViewModel = viewModel.newsArticleCellViewModels[indexPath.row]
         cell.configureCell(with: cellViewModel)
+        cell.accessibilityIdentifier = "cell_\(indexPath.row)"
+
         return cell
     }
 }

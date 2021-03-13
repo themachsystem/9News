@@ -8,25 +8,69 @@
 import XCTest
 
 class NewsArticleViewControllerUITests: XCTestCase {
+    let app = XCUIApplication()
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
+    func testNetworkCallFails_showsErrorMessage() {
+        configureEnvironmentMockFailedNetworkCall()
         app.launch()
-        
+        let retryButton = app.alerts["Network Error!"].scrollViews.otherElements.buttons["Retry"]
+        XCTAssertTrue(retryButton.exists)
+    }
+    
+    func testNetworkCallFails_tableViewEmpty() {
+        configureEnvironmentMockFailedNetworkCall()
+        app.launch()
+        let tableView = app.tables["newsTableView"]
+        let numberOfRows = tableView.children(matching: .cell).count
+        XCTAssertEqual(numberOfRows, 0)
     }
 
+    func testNetworkCallSuccess_tableViewNotEmpty() {
+        app.launch()
+        let tableView = app.tables["newsTableView"]
+        let numberOfRows = tableView.children(matching: .cell).count
+        XCTAssertGreaterThan(numberOfRows, 0)
+    }
+
+    func testTapNewsArticle_showsWebView() {
+        app.launch()
+        let tableView = app.tables["newsTableView"]
+        let firstCell = tableView.cells["cell_0"]
+        firstCell.tap()
+        
+        let webView = app.webViews["newsWebView"]
+        XCTAssertTrue(webView.exists)
+    }
+    
+    func testTapNewsArticle_showsWebView_hasNewsTitleInNavigationTitle() {
+        app.launch()
+        let tableView = app.tables["newsTableView"]
+        let firstCell = tableView.cells["cell_0"]
+        let newsHeadlineLabel = firstCell.staticTexts["HeadlineLabel"]
+        let newsTitle = newsHeadlineLabel.label
+        firstCell.tap()
+        
+        let navigationBar = app.navigationBars[UITestingConfig.AccessibilityIdentifier.webViewNavigationTitle]
+        let navigationTitle = navigationBar.children(matching: .staticText).firstMatch.label
+        XCTAssertEqual(navigationTitle, newsTitle)
+    }
+
+}
+
+extension NewsArticleViewControllerUITests {
+    /**
+     * Mocks failed network call
+     */
+    private func configureEnvironmentMockFailedNetworkCall() {
+        app.launchArguments += [UITestingConfig.kShouldMockNetworkCall]
+        app.launchEnvironment[UITestingConfig.kNetworkCallShouldFail] = "true"
+    }
 }

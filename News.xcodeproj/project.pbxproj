@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F22858C25FCA7080084AD0E /* UITestingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22858B25FCA7080084AD0E /* UITestingConfig.swift */; };
+		1F22859625FCAAE00084AD0E /* UITestingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22858B25FCA7080084AD0E /* UITestingConfig.swift */; };
+		1F2285A125FCAAF90084AD0E /* MockWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F366ABA25FC2012003C031B /* MockWebService.swift */; };
+		1F2285A525FCAB030084AD0E /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F59F9EB25FB715D00F9504C /* WebServiceProtocol.swift */; };
+		1F2285A925FCAB0E0084AD0E /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F59FA0025FB748200F9504C /* NewsModel.swift */; };
+		1F2285AD25FCB39D0084AD0E /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F59F9F725FB72A400F9504C /* WebService.swift */; };
+		1F2285B125FCB3B20084AD0E /* UITestingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22858B25FCA7080084AD0E /* UITestingConfig.swift */; };
 		1F366ABB25FC2012003C031B /* MockWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F366ABA25FC2012003C031B /* MockWebService.swift */; };
 		1F366ACE25FC2307003C031B /* NewsArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F59F9E525FB701E00F9504C /* NewsArticlesViewModel.swift */; };
 		1F366AD925FC233B003C031B /* NewsArticlesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F59F9E025FB691000F9504C /* NewsArticlesCellViewModel.swift */; };
@@ -62,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F22858B25FCA7080084AD0E /* UITestingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingConfig.swift; sourceTree = "<group>"; };
 		1F366ABA25FC2012003C031B /* MockWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWebService.swift; sourceTree = "<group>"; };
 		1F366AE125FC2C65003C031B /* MockNewsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockNewsData.json; sourceTree = "<group>"; };
 		1F366AE825FC3BDE003C031B /* NewsArticlesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticlesViewControllerTests.swift; sourceTree = "<group>"; };
@@ -266,6 +274,7 @@
 			children = (
 				1F59F99E25FB640300F9504C /* AppDelegate.swift */,
 				1F59F9A025FB640300F9504C /* SceneDelegate.swift */,
+				1F22858B25FCA7080084AD0E /* UITestingConfig.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F22858C25FCA7080084AD0E /* UITestingConfig.swift in Sources */,
 				1F59F9EC25FB715D00F9504C /* WebServiceProtocol.swift in Sources */,
 				1F59F9F825FB72A400F9504C /* WebService.swift in Sources */,
 				1F59FA1F25FB972700F9504C /* UIView+AddShadow.swift in Sources */,
@@ -578,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F2285B125FCB3B20084AD0E /* UITestingConfig.swift in Sources */,
 				1F366AE925FC3BDE003C031B /* NewsArticlesViewControllerTests.swift in Sources */,
 				1F366AFC25FC411F003C031B /* UIView+AddShadow.swift in Sources */,
 				1F366B4625FC4A8E003C031B /* MockWebServiceTests.swift in Sources */,
@@ -598,7 +609,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F2285AD25FCB39D0084AD0E /* WebService.swift in Sources */,
+				1F2285A525FCAB030084AD0E /* WebServiceProtocol.swift in Sources */,
+				1F2285A125FCAAF90084AD0E /* MockWebService.swift in Sources */,
+				1F22859625FCAAE00084AD0E /* UITestingConfig.swift in Sources */,
 				1F59F9C125FB640400F9504C /* NewsArticleViewControllerUITests.swift in Sources */,
+				1F2285A925FCAB0E0084AD0E /* NewsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
