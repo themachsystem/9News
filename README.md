@@ -33,6 +33,9 @@ Do a pod install from the root folder, open News.xcworkspace and do a build.
 * When running the automated UI tests, you can see the application simulates the user interactions. 
 
 ### App screenshots
-![Screenshot](/light.png)
+![Screenshot](/light.png) 
+
 ![Screenshot](/dark.png)
+
 ![Screenshot](/web.png)
+
