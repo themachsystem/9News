@@ -32,7 +32,11 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
     }
     
     private func createActivityIndicator() {
-        activityIndicator = UIActivityIndicatorView(style: .medium)
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView(style: .medium)
+        } else {
+            activityIndicator = UIActivityIndicatorView(style: .white)
+        }
         activityIndicator.color = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
     }

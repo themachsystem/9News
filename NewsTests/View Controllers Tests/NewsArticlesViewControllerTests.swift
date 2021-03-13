@@ -56,6 +56,6 @@ extension NewsArticlesViewControllerTests {
     private func makeSUT() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationController = storyboard.instantiateViewController(withIdentifier: "NewsNavigationViewController") as? UINavigationController
-        sut = navigationController?.topViewController as? News.NewsArticlesViewController
+        sut = navigationController?.topViewController as? NewsArticlesViewController
     }
 }
