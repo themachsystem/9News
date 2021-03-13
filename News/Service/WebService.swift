@@ -13,9 +13,6 @@ struct WebService: WebServiceProtocol {
      */
     private let apiUrl = "https://bruce-v2-mob.fairfaxmedia.com.au/1/coding_test/13ZZQX/full"
     
-    /**
-     * The shared singleton session object.
-     */
     private let urlSession: URLSession
     
     init() {
