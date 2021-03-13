@@ -27,7 +27,12 @@
 
 Do a pod install from the root folder, open News.xcworkspace and do a build.
 
-## Running the tests
+### Running the tests
 
 * The  test are run by selecting the Test Navigator tab on XCode left side panel
 * When running the automated UI tests, you can see the application simulates the user interactions. 
+
+### App screenshots
+![Screenshot](/light.png)
+![Screenshot](/dark.png)
+![Screenshot](/web.png)
