@@ -26,6 +26,7 @@ class NewsCell: UITableViewCell {
         headlineLabel.text = viewModel.headline
         byLineLabel.text = viewModel.byLine
         abstractLabel.text = viewModel.theAbstract
+        
         let imageUrl = URL(string: viewModel.imageUrl)
         thumbnailImageView.sd_setImage(with: imageUrl,
                                        placeholderImage: nil,

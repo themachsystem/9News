@@ -52,7 +52,7 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 if let error = error {
-                    print(error.localizedDescription)
+                    self.showErrorMessage(error.localizedDescription)
                 }
                 self.updateNavigationTitle()
                 self.tableView.reloadData()
@@ -60,6 +60,9 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
         }
     }
     // MARK: - LoadingActivityIndicator
+    /**
+     * The loading view that will show on top right of navigation bar when news is being fetched.
+     */
     var activityIndicator: UIActivityIndicatorView!
     
     func showLoadingIndicator() {
@@ -94,6 +97,17 @@ extension NewsArticlesViewController {
         performSegue(withIdentifier: showNewsPageSegueIdentifier, sender: pageViewModel)
     }
 }
+
+// MARK: - Alert Controller
+extension NewsArticlesViewController {
+    private func showErrorMessage(_ errorMessage: String) {
+        let alertController = UIAlertController(title: "Error!", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        navigationController?.present(alertController, animated: true, completion: nil)
+    }
+}
+
 
 //MARK: - Navigation
 extension NewsArticlesViewController {
