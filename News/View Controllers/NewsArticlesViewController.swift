@@ -23,7 +23,7 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView!.register(UINib(nibName: String(describing: NewsCell.self), bundle: nil), forCellReuseIdentifier: newsCellIdentifier)
+        tableView.register(UINib(nibName: String(describing: NewsCell.self), bundle: nil), forCellReuseIdentifier: newsCellIdentifier)
         
         createActivityIndicator()
         
