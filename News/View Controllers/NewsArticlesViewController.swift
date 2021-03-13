@@ -56,7 +56,7 @@ class NewsArticlesViewController: UITableViewController, LoadingActivityIndicato
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 if let error = error {
-                    self.showErrorMessage(error.localizedDescription)
+                    self.showNetworkErrorMessage(error.localizedDescription)
                 }
                 self.updateNavigationTitle()
                 self.tableView.reloadData()
@@ -104,9 +104,11 @@ extension NewsArticlesViewController {
 
 // MARK: - Alert Controller
 extension NewsArticlesViewController {
-    private func showErrorMessage(_ errorMessage: String) {
-        let alertController = UIAlertController(title: "Error!", message: errorMessage, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    private func showNetworkErrorMessage(_ errorMessage: String) {
+        let alertController = UIAlertController(title: "Network Error!", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Retry", style: .default) { _ in
+            self.loadNews()
+        }
         alertController.addAction(okAction)
         navigationController?.present(alertController, animated: true, completion: nil)
     }

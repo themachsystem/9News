@@ -22,6 +22,9 @@ class NewsCell: UITableViewCell {
         containerView.addShadow()
     }
     
+    /**
+     * Configures cell's UIs from the view model data.
+     */
     func configureCell(with viewModel: NewsArticleCellViewModel) {
         headlineLabel.text = viewModel.headline
         byLineLabel.text = viewModel.byLine
@@ -30,7 +33,7 @@ class NewsCell: UITableViewCell {
         let imageUrl = URL(string: viewModel.imageUrl)
         thumbnailImageView.sd_setImage(with: imageUrl,
                                        placeholderImage: nil,
-                                       options: .retryFailed,
+                                       options: .refreshCached,
                                        completed: nil)
     }
     

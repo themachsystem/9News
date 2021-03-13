@@ -16,8 +16,15 @@ struct WebService: WebServiceProtocol {
     /**
      * The shared singleton session object.
      */
-    private let urlSession = URLSession.shared
+    private let urlSession: URLSession
     
+    init() {
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+        config.urlCache = nil
+        urlSession = URLSession.init(configuration: config)
+    }
+        
     func fetchNews(completion: @escaping (Result<NewsModel?, Error>) -> Void) {
         let url = URL(string: apiUrl)!
         
